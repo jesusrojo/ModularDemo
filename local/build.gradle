@@ -1,0 +1,30 @@
+apply plugin: "com.android.library"
+apply from: "$rootDir/base_kotlin_android.gradle"
+android {
+    defaultConfig {
+        consumerProguardFiles "consumer-rules.pro"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+dependencies {
+    implementation project(':data')
+    implementation "javax.inject:javax.inject:$javaInjectVersion"
+    // COROUTINES
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_android_version"
+    // ROOM
+    def room_version = "2.3.0"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+    kapt "android.arch.persistence.room:compiler:1.1.1"
+    kapt "androidx.room:room-compiler:$room_version"//NEEDS ON TOP apply plugin: 'kotlin-kapt'
+    // optional -Kotlin Extensions & Coroutines support for Room
+    implementation "androidx.room:room-ktx:$room_version"
+    // optional - Test helpers
+    androidTestImplementation "androidx.room:room-testing:$room_version"
+    testImplementation "androidx.room:room-testing:$room_version"
+}

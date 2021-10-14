@@ -18,10 +18,10 @@ class RepositoryModule {
     @Provides
     fun provideUiDatasRepository(
         remote: UiDatasRemoteDataSource,
-//        local: UiDatasLocalDataSource,
+        local: UiDatasLocalDataSource,
 //        mapper: UiDataToUiDataEntityMapper
     ): UiDatasRepository {
-        return UiDatasRepositoryImpl(remote//, local, mapper
+        return UiDatasRepositoryImpl(remote, local, //mapper
         )
     }
 }

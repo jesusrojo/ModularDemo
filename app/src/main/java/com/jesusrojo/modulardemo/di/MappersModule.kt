@@ -2,6 +2,9 @@ package com.jesusrojo.modulardemo.di
 
 
 
+import com.jesusrojo.data.mapper.UiDataEntityToUiDataMapper
+import com.jesusrojo.local.room.mapper.UiDataDboToUiDataMapper
+import com.jesusrojo.local.room.mapper.UiDataToDboMapper
 import com.jesusrojo.remote.mapper.RawDataToUiDataMapper
 import dagger.Module
 import dagger.Provides
@@ -13,13 +16,23 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class MappersModule {
 
-//    @Singleton
-//    @Provides
-//    fun provideUiDataEntityToUiDataMapper():
-//            UiDataEntityToUiDataMapper = UiDataEntityToUiDataMapper()
+    @Singleton
+    @Provides
+    fun provideUiDataEntityToUiDataMapper():
+            UiDataEntityToUiDataMapper = UiDataEntityToUiDataMapper()
 
     @Singleton
     @Provides
     fun provideRawDataToUiDataMapper(): RawDataToUiDataMapper =
         RawDataToUiDataMapper()
+
+    @Singleton
+    @Provides
+    fun provideUiDataToDboMapper(): UiDataToDboMapper =
+        UiDataToDboMapper()
+
+    @Singleton
+    @Provides
+    fun provideUiDataDboToUiDataMapper(): UiDataDboToUiDataMapper =
+        UiDataDboToUiDataMapper()
 }
