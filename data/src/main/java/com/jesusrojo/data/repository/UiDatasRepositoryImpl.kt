@@ -14,6 +14,7 @@ import javax.inject.Inject
 class UiDatasRepositoryImpl @Inject constructor(
     private val remote: UiDatasRemoteDataSource,
     private val local: UiDatasLocalDataSource,
+//    private val prefs: PrefsHelp,
 ) : UiDatasRepository {
 
     private val isDebug = true
@@ -37,23 +38,19 @@ class UiDatasRepositoryImpl @Inject constructor(
     private suspend fun fetchFromRemoteAndSaveToDB(): RemoteState<List<UiData>> {
         l("fetchFromRemoteAndSaveToDB")
         val remoteState = remote.fetchDatasRemote()
-        return handleRemoteState(remoteState)
+        return when (remoteState) {
+            is RemoteState.Success -> handleSuccess(remoteState)
+            is RemoteState.Error -> RemoteState.Error("Error ${remoteState.message}")
+        }
     }
 
-    private suspend fun handleRemoteState(remoteState: RemoteState<List<UiData>>):
-            RemoteState<List<UiData>> {
-        l("handleRemoteState")
-        return when (remoteState) {
-            is RemoteState.Success -> {
-                val uiDatas: List<UiData>? = remoteState.data
-                if (isNotNullNotEmpty(uiDatas)) {
-                      local.saveToDB(uiDatas!!)
-                    RemoteState.Success(uiDatas!!)
-                } else {
-                    RemoteState.Error("Error datas null or empty. ${remoteState.message}")
-                }
-            }
-            is RemoteState.Error -> RemoteState.Error("Error ${remoteState.message}")
+    private suspend fun handleSuccess(remoteState: RemoteState<List<UiData>>): RemoteState<List<UiData>> {
+        val uiDatas: List<UiData>? = remoteState.data
+        return if (isNotNullNotEmpty(uiDatas)) {
+            local.saveToDB(uiDatas!!)
+            RemoteState.Success(uiDatas!!)
+        } else {
+            RemoteState.Error("Error datas null or empty. ${remoteState.message}")
         }
     }
 
