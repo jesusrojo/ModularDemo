@@ -10,17 +10,25 @@ class UiDataEntityToUiDataMapper @Inject constructor() : Function1<List<UiDataEn
     override fun invoke(entityDatas: List<UiDataEntity>): List<UiData> {
         return entityDatas.map {
             var dataId: Int= 0
-            var name = ""
+            var title = ""
+            var description = ""
+            var imgUrl = ""
 
             val dataIdRaw = it?.dataId
             if (dataIdRaw != null) dataId = dataIdRaw
 
             var raw: String?
-            raw = it?.name
-            if (raw != null) name = raw
+            raw = it?.title
+            if (raw != null) title = raw
 
-         
-            UiData(dataId, name)
+
+            raw = it?.description
+            if (raw != null) description = raw
+
+            raw = it?.imgUrl
+            if (raw != null) imgUrl = raw
+
+            UiData(dataId, title,description, imgUrl)
         }
     }
 }

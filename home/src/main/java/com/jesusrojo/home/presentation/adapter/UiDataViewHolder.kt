@@ -18,7 +18,7 @@ class UiDataViewHolder(
         var textUi = position.toString()
         binding.positionTvItem.text = textUi // _up DEBUG POSITION
 
-        textUi = uiData.name
+        textUi = uiData.title
         binding.titleTvItem.text = textUi
 
         textUi = uiData.toString() // _UP DEBUG TO STRING

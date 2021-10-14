@@ -41,8 +41,8 @@ class RawDataToUiDataMapper @Inject constructor() : Function1<List<RawData>, Lis
             val companyRaw = it.company?.toString()
             if (companyRaw != null) company = companyRaw
 
-            val toString = it.toString()
-            UiData(userId, toString)
+            val description = it.toString()
+            UiData(userId, name, description, "")
 //            UiData(userId, name, username, email, phone, website, address, company)
 
         }

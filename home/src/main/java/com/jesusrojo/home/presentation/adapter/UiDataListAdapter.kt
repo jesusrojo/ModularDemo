@@ -36,7 +36,7 @@ class UiDataListAdapter(
     fun orderByTitle() {
         val values = currentList
         val modifiableList: ArrayList<UiData> = ArrayList(values)
-        modifiableList.sortWith(compareBy(String.CASE_INSENSITIVE_ORDER, { it.name }))
+        modifiableList.sortWith(compareBy(String.CASE_INSENSITIVE_ORDER, { it.title }))
         submitList(values)
     }
 

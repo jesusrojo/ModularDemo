@@ -31,6 +31,7 @@
             android:layout_height="100dp"
             android:layout_gravity="center_vertical|center_horizontal"
             android:contentDescription="@string/items_avatar_description"
+            android:src="@android:drawable/star_on"
             android:scaleType="fitXY" />
 
 

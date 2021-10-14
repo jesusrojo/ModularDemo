@@ -3,10 +3,8 @@ package com.jesusrojo.home.presentation.fragment.items.uihelp
 import android.app.Activity
 import android.os.Bundle
 import android.view.*
-import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jesusrojo.data.model.UiData
@@ -124,7 +122,7 @@ class UiHelper(
     private fun onClickAdapterItemMenu(data: UiData, position: Int) {
         //onClickAdapterMenuItem.invoke(data,position)
         DetailsDialogFragment.showInfoDialogFragment(
-            activity as AppCompatActivity, data.name, data.toString()) // _UP rename
+            activity as AppCompatActivity, data.title, data.toString()) // _UP rename
 ///////////////OK WITH PARCELABLE OBJECT
 //        val bundle = bundleOf(SecondFragment.UIDATA_PARAM_KEY to data)
 //        findNavController().navigate(R.id.action_FirstFragment_to_DetailsFragment, bundle)
