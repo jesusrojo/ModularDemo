@@ -1,0 +1,5 @@
+<resources>
+    <string name="launcher_fragment">Launcher Fragment</string>
+    <string name="start_game">Start Game</string>
+    <string name="list_fragment">List fragment</string>
+</resources>
