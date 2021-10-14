@@ -1,0 +1,40 @@
+<resources>
+    <string name="search_title">Search</string>
+
+    <string name="items">Items</string>
+    <string name="items_avatar_description">Items Avatar Description</string>
+    <string name="details">Details</string>
+
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+
+    <string name="error_no_internet">There is not Internet</string>
+    <string name="error_empty_list_explanation">List is empty
+        \n\nSwipe down the screen to get users</string>
+
+    <string name="cancel">Cancel</string>
+    <string name="position">Position</string>
+    <string name="name">NAME</string>
+    <string name="author_name">AUTHOR</string>
+    <string name="retry">Retry</string>
+    <string name="kotlin">Kotlin</string>
+    <string name="language">Language:</string>
+    <string-array name="languages_array">
+        <item>ar</item>
+        <item>de</item>
+        <item>en</item>
+        <item>es</item>
+        <item>fr</item>
+        <item>he</item>
+        <item>it</item>
+        <item>nl</item>
+        <item>no</item>
+        <item>pt</item>
+        <item>ru</item>
+        <item>se</item>
+        <item>ud</item>
+        <item>zh</item>
+        <item>FAIL</item>
+    </string-array>
+
+</resources>

@@ -5,5 +5,5 @@
     app:startDestination="@id/nav_graph_launcher">
 
     <include app:graph="@navigation/nav_graph_launcher" />
-<!--    <include app:graph="@navigation/nav_graph_list" />-->
+    <include app:graph="@navigation/nav_graph_home" />
 </navigation>

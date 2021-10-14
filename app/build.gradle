@@ -14,8 +14,8 @@ android {
     }
 }
 dependencies {
-//    implementation project(path: ':data')
+    implementation project(path: ':data')
+    implementation project(path: ':home')
     implementation project(path: ':launcher')
-//    implementation project(path: ':list')
-//    implementation project(path: ':remote')
+    implementation project(path: ':remote')
 }

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_home"
+    app:startDestination="@id/itemsFragment">
+
+    <fragment
+        android:id="@+id/itemsFragment"
+        android:name="com.jesusrojo.home.presentation.fragment.items.ItemsFragment"
+        android:label="@string/items"
+        tools:layout="@layout/items_layout">
+
+        <deepLink app:uri="myApp://GoToItemsFragment" />
+
+        <action
+            android:id="@+id/go_to_DetailsFragment"
+            app:destination="@id/detailsFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpToInclusive="true" />
+
+        <argument
+            android:name="myArg"
+            app:argType="com.jesusrojo.data.model.UiData"/><!--_UP rename-->
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.jesusrojo.home.presentation.fragment.details.DetailsFragment"
+        android:label="@string/details"
+        tools:layout="@layout/item_layout">
+
+        <argument
+            android:name="myArg"
+            app:argType="com.jesusrojo.data.model.UiData"/><!--_UP rename-->
+    </fragment>
+
+</navigation>

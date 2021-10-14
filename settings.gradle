@@ -9,3 +9,6 @@ dependencyResolutionManagement {
 rootProject.name = "ModularDemo"
 include ':app'
 include ':launcher'
+include ':home'
+include ':data'
+include ':remote'

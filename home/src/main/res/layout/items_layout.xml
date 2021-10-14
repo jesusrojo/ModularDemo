@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swipe_layout_container_items"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- _UP DEBUG logs-->
+        <TextView android:id="@+id/tv_debug_items"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:gravity="end"/>
+
+        <!--LANGUAGE-->
+        <TextView  android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/language"/>
+
+        <TextView android:id="@+id/tv_language_items"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="22sp"/>
+
+        <!--ERROR - PROGRESS BAR - RECYCLER-->
+        <TextView
+            android:id="@+id/text_view_error_items"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar_items"
+            android:indeterminate="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:minHeight="40dp"
+            android:visibility="gone"
+            style="?android:attr/progressBarStyleHorizontal" /><!--progressBarStyle"-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view_items"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/item_layout" />
+
+    </LinearLayout>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
