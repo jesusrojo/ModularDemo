@@ -1,0 +1,8 @@
+<PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <SwitchPreferenceCompat
+        app:key="should_update_key"
+        app:title="Should Update"
+        app:summary="True, will fetch from remote. False from local or remote"/>
+</PreferenceScreen>

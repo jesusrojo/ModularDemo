@@ -35,7 +35,7 @@ class UiDatasRepositoryImpl @Inject constructor(
         return fetchFromRemoteAndSaveToDB()
     }
 
-    private suspend fun fetchFromRemoteAndSaveToDB(): RemoteState<List<UiData>> {
+    override suspend fun fetchFromRemoteAndSaveToDB(): RemoteState<List<UiData>> {
         l("fetchFromRemoteAndSaveToDB")
         val remoteState = remote.fetchDatasRemote()
         return when (remoteState) {

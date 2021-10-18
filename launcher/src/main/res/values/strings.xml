@@ -1,5 +1,8 @@
 <resources>
-    <string name="launcher_fragment">Launcher Fragment</string>
+    <string name="launcher_fragment_label">Launcher Fragment</string>
+    <string name="prefs_fragment">Prefs Fragment</string>
     <string name="start_game">Start Game</string>
     <string name="list_fragment">List fragment</string>
+
+    <string name="preferences">Preferences</string>
 </resources>

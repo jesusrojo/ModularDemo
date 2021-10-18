@@ -9,6 +9,7 @@ import com.jesusrojo.data.model.UiState
 
 import com.jesusrojo.home.di.hilt.IoDispatcher
 import com.jesusrojo.common.util.DebugHelp
+import com.jesusrojo.common.util.PrefsHelp
 import com.jesusrojo.common.util.exhaustive
 
 
@@ -20,7 +21,8 @@ import javax.inject.Inject
 class ItemsViewModel @Inject constructor(
     private val repository: UiDatasRepository,
     private val mapper: UiDataEntityToUiDataMapper,
-    @IoDispatcher private val ioDispatcher: CoroutineDispatcher
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
+    private val prefsHelp: PrefsHelp
 ) : ViewModel() {
 
     private val vmScope = viewModelScope
@@ -40,15 +42,34 @@ class ItemsViewModel @Inject constructor(
 
     private fun updateUiError(message: String) = _uiState.postValue(UiState.Error(message))
 
-    init {
-        fetchDatas()
-    }
-
     override fun onCleared() {
         fetchDatasJob?.cancel()
         deleteAllDB()
         super.onCleared()
     }
+
+    init {
+        fetchDatasWithPrefs()
+        fetchDatas()
+    }
+
+    private fun fetchDatasWithPrefs() {
+        fetchDatasJob?.cancel()
+        fetchDatasJob = vmScope.launch(ioDispatcher) {
+            if (prefsHelp.getShouldUpdate()) {
+                try {
+                    val remoteState = repository.fetchFromRemoteAndSaveToDB()
+                    handleRepoState(remoteState)
+                } catch (e: Exception) {
+                    updateUiError("Error $e")
+                }
+            } else {
+                fetchDatas()
+            }
+        }
+    }
+
+
 
     private fun fetchDatas() {
         updateUiLoading()

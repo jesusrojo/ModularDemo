@@ -7,7 +7,7 @@
 
     <TextView
         android:id="@+id/launcher_tv"
-        android:text="@string/launcher_fragment"
+        android:text="@string/launcher_fragment_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal|center_vertical"

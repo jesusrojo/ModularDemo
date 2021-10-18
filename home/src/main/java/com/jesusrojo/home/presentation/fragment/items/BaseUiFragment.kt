@@ -125,9 +125,9 @@ abstract class BaseUiFragment : Fragment() {
     }
 
     // MENU TOP RIGHT
-    override fun onOptionsItemSelected(item: MenuItem) =
-        uiHelper.onOptionsItemSelected(item)
-
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) =
         uiHelper.onCreateOptionsMenu(menu, inflater)
+
+    override fun onOptionsItemSelected(item: MenuItem) =
+        uiHelper.onOptionsItemSelected(item)
 }

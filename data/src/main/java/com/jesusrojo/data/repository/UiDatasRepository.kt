@@ -8,4 +8,5 @@ interface UiDatasRepository {
     suspend fun fetchDatas(): RemoteState<List<UiData>>
     suspend fun fetchDatasFlow(): Flow<RemoteState<List<UiData>>>
     suspend fun deleteAllDB()
+    suspend fun fetchFromRemoteAndSaveToDB(): RemoteState<List<UiData>>
 }

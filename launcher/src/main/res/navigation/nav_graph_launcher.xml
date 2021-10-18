@@ -8,8 +8,23 @@
     <fragment
         android:id="@+id/LauncherFragmentId"
         android:name="com.jesusrojo.launcher.LauncherFragment"
-        android:label="@string/launcher_fragment"
+        android:label="@string/launcher_fragment_label"
         tools:layout="@layout/launcher_fragment_layout">
+
+        <action
+            android:id="@+id/go_to_PrefsFragment"
+            app:destination="@id/PrefsFragmentId"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpToInclusive="true" />
     </fragment>
 
+    <fragment
+        android:id="@+id/PrefsFragmentId"
+        android:name="com.jesusrojo.launcher.PrefsFragment"
+        android:label="@string/launcher_fragment_label"
+        tools:layout="@layout/launcher_fragment_layout">
+    </fragment>
 </navigation>
