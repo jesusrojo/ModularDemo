@@ -8,8 +8,8 @@ import com.jesusrojo.data.repository.UiDatasRepository
 import com.jesusrojo.list.model.UiState
 
 import com.jesusrojo.home.di.hilt.IoDispatcher
-import com.jesusrojo.home.util.DebugHelp
-import com.jesusrojo.home.util.exhaustive
+import com.jesusrojo.common.util.DebugHelp
+import com.jesusrojo.common.util.exhaustive
 
 
 import dagger.hilt.android.lifecycle.HiltViewModel

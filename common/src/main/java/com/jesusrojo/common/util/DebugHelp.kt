@@ -1,4 +1,4 @@
-package com.jesusrojo.home.util
+package com.jesusrojo.common.util
 
 import android.util.Log
 //import logcat.logcat

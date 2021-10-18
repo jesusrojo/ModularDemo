@@ -15,7 +15,7 @@ import com.jesusrojo.home.di.Injection
 import com.jesusrojo.home.presentation.adapter.UiDataListAdapter
 import com.jesusrojo.home.presentation.dialogfragments.DetailsDialogFragment
 import com.jesusrojo.list.util.InternetHelp
-import com.jesusrojo.home.util.toast
+import com.jesusrojo.common.util.toast
 
 
 import kotlin.collections.ArrayList

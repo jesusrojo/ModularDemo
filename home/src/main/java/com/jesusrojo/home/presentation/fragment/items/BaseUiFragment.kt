@@ -13,8 +13,8 @@ import com.jesusrojo.list.model.UiState
 
 import com.jesusrojo.home.presentation.fragment.details.DetailsFragment
 import com.jesusrojo.home.presentation.fragment.items.uihelp.UiHelper
-import com.jesusrojo.home.util.exhaustive
-import com.jesusrojo.home.util.toast
+import com.jesusrojo.common.util.exhaustive
+import com.jesusrojo.common.util.toast
 
 import dagger.hilt.android.AndroidEntryPoint
 
