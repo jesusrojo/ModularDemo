@@ -18,7 +18,7 @@ class UiDatasRepositoryImpl @Inject constructor(
     private val logger = Logger.getLogger(UiDatasRepositoryImpl::class.java.simpleName)
     private fun l(msg: String) { if(isDebug)logger.log(Level.INFO, "$msg ##") }
 
-    override suspend fun fetchDatas(shouldUpdate: Boolean): RemoteState<List<UiData>> {
+    override suspend fun fetchDatas(shouldUpdate: Boolean): RepoState<List<UiData>> {
         l("fetchDatas $shouldUpdate")
         if(shouldUpdate){
             return fetchFromRemoteAndSaveToDB()
@@ -26,32 +26,32 @@ class UiDatasRepositoryImpl @Inject constructor(
         return fetchFromDBOrRemote()
     }
 
-    private suspend fun fetchFromDBOrRemote(): RemoteState<List<UiData>> {
+    private suspend fun fetchFromDBOrRemote(): RepoState<List<UiData>> {
         l("fetchFromDBOrRemote")
         val uiDatas = local.fetchDatasDB()
         if (isNotNullNotEmpty(uiDatas)) {
-            return RemoteState.Success(uiDatas, "local")
+            return RepoState.Success(uiDatas, "local")
         }
         return fetchFromRemoteAndSaveToDB()
     }
 
-    private suspend fun fetchFromRemoteAndSaveToDB(): RemoteState<List<UiData>> {
+    private suspend fun fetchFromRemoteAndSaveToDB(): RepoState<List<UiData>> {
         l("fetchFromRemoteAndSaveToDB")
-        val remoteState = remote.fetchDatasRemote()
-        return when (remoteState) {
-            is RemoteState.Success -> handleSuccess(remoteState)
-            is RemoteState.Error -> RemoteState.Error("Error ${remoteState.message}")
+        val repoState = remote.fetchDatasRemote()
+        return when (repoState) {
+            is RepoState.Success -> handleSuccess(repoState)
+            is RepoState.Error -> RepoState.Error("Error ${repoState.message}")
         }
     }
 
-    private suspend fun handleSuccess(remoteState: RemoteState<List<UiData>>): RemoteState<List<UiData>> {
-        val uiDatas: List<UiData>? = remoteState.data
-        val msg: String? = remoteState.message
+    private suspend fun handleSuccess(repoState: RepoState<List<UiData>>): RepoState<List<UiData>> {
+        val uiDatas: List<UiData>? = repoState.data
+        val msg: String? = repoState.message
         return if (isNotNullNotEmpty(uiDatas)) {
             deleteDBAndSaveToDB(uiDatas!!)
-            RemoteState.Success(uiDatas, msg)
+            RepoState.Success(uiDatas, msg)
         } else {
-            RemoteState.Error("Error datas null or empty. ${remoteState.message}")
+            RepoState.Error("Error datas null or empty. ${repoState.message}")
         }
     }
 
@@ -67,7 +67,7 @@ class UiDatasRepositoryImpl @Inject constructor(
         local.deleteAllDB()
     }
 
-    override suspend fun fetchDatasFlow(): Flow<RemoteState<List<UiData>>> {
+    override suspend fun fetchDatasFlow(): Flow<RepoState<List<UiData>>> {
         TODO("Not yet implemented")
     }
 }

@@ -7,5 +7,5 @@ import retrofit2.http.GET
 interface RawDatasApiService {
 
     @GET("users")
-    suspend fun fetchDatas(): Response<List<RawData>>
+    suspend fun fetchDatasApi(): Response<List<RawData>>
 }

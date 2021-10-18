@@ -2,7 +2,7 @@ package com.jesusrojo.home.presentation.viewmodel
 
 import androidx.lifecycle.*
 import com.jesusrojo.data.mapper.UiDataEntityToUiDataMapper
-import com.jesusrojo.data.model.RemoteState
+import com.jesusrojo.data.model.RepoState
 import com.jesusrojo.data.model.UiData
 import com.jesusrojo.data.repository.UiDatasRepository
 import com.jesusrojo.data.model.UiState
@@ -61,26 +61,26 @@ class ItemsViewModel @Inject constructor(
         fetchDatasJob = vmScope.launch(ioDispatcher) {
             try {
                 val shouldUpdate = shouldUpdate()
-                val remoteState = repository.fetchDatas(shouldUpdate)
-                handleRemoteState(remoteState)
+                val repoState = repository.fetchDatas(shouldUpdate)
+                handleRemoteState(repoState)
             } catch (e: Exception) {
                 updateUiError("Error $e")
             }
         }
     }
 
-    private fun handleRemoteState(remoteState: RemoteState<List<UiData>>) {
-        when (remoteState) {
-            is RemoteState.Success -> {
-                val uiDatas: List<UiData>? = remoteState.data
-                val msg: String? = remoteState.message
+    private fun handleRemoteState(repoState: RepoState<List<UiData>>) {
+        when (repoState) {
+            is RepoState.Success -> {
+                val uiDatas: List<UiData>? = repoState.data
+                val msg: String? = repoState.message
                 if (uiDatas != null) {
                     updateUiSuccess(UiState.Success(uiDatas, msg!!))
                 } else {
-                    updateUiError("Error ${remoteState.message}")
+                    updateUiError("Error ${repoState.message}")
                 }
             }
-            is RemoteState.Error -> updateUiError("Error ${remoteState.message}")
+            is RepoState.Error -> updateUiError("Error ${repoState.message}")
         }.exhaustive
     }
 
