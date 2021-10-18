@@ -2,13 +2,17 @@ package com.jesusrojo.modulardemo.di
 
 import com.jesusrojo.data.datasource.UiDatasLocalDataSource
 import com.jesusrojo.data.datasource.UiDatasRemoteDataSource
+import com.jesusrojo.data.datasource.UsersRemoteDataSource
 import com.jesusrojo.local.datasource.UiDatasLocalDataSourceImpl
 import com.jesusrojo.local.room.UiDataDao
 import com.jesusrojo.local.room.mapper.UiDataDboToUiDataMapper
 import com.jesusrojo.local.room.mapper.UiDataToDboMapper
 import com.jesusrojo.remote.api.RawDatasApiService
+import com.jesusrojo.remote.api.UsersApiService
 import com.jesusrojo.remote.datasource.UiDatasRemoteDataSourceImpl
+import com.jesusrojo.remote.datasource.UsersRemoteDataSourceImpl
 import com.jesusrojo.remote.mapper.RawDataToUiDataMapper
+import com.jesusrojo.remote.mapper.UserRawDataToUiDataMapper
 
 
 import dagger.Module
@@ -37,5 +41,13 @@ class DataSourceModule {
         apiService: RawDatasApiService,
         mapper: RawDataToUiDataMapper
     ): UiDatasRemoteDataSource = UiDatasRemoteDataSourceImpl(apiService, mapper)
+
+
+    @Singleton
+    @Provides
+    fun provideUsersRemoteDataSource(
+        apiService: UsersApiService,
+        mapper: UserRawDataToUiDataMapper
+    ): UsersRemoteDataSource = UsersRemoteDataSourceImpl(apiService, mapper)
 
 }

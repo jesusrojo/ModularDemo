@@ -2,6 +2,7 @@ package com.jesusrojo.modulardemo.di
 
 import com.jesusrojo.data.datasource.UiDatasLocalDataSource
 import com.jesusrojo.data.datasource.UiDatasRemoteDataSource
+import com.jesusrojo.data.datasource.UsersRemoteDataSource
 import com.jesusrojo.data.repository.UiDatasRepository
 import com.jesusrojo.data.repository.UiDatasRepositoryImpl
 import dagger.Module
@@ -17,7 +18,8 @@ class RepositoryModule {
     @Singleton
     @Provides
     fun provideUiDatasRepository(
-        remote: UiDatasRemoteDataSource,
+        //remote: UiDatasRemoteDataSource,
+        remote: UsersRemoteDataSource,
         local: UiDatasLocalDataSource,
 //        mapper: UiDataToUiDataEntityMapper
     ): UiDatasRepository {

@@ -2,6 +2,7 @@ package com.jesusrojo.data.repository
 
 import com.jesusrojo.data.datasource.UiDatasLocalDataSource
 import com.jesusrojo.data.datasource.UiDatasRemoteDataSource
+import com.jesusrojo.data.datasource.UsersRemoteDataSource
 import com.jesusrojo.data.model.*
 
 import kotlinx.coroutines.flow.Flow
@@ -10,7 +11,8 @@ import java.util.logging.Logger
 import javax.inject.Inject
 
 class UiDatasRepositoryImpl @Inject constructor(
-    private val remote: UiDatasRemoteDataSource,
+//    private val remote: UiDatasRemoteDataSource,
+    private val remote: UsersRemoteDataSource,//todo users
     private val local: UiDatasLocalDataSource,
 ) : UiDatasRepository {
 

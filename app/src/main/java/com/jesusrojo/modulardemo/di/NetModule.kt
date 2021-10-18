@@ -3,6 +3,7 @@ package com.jesusrojo.modulardemo.di
 import android.content.Context
 import com.jakewharton.espresso.OkHttp3IdlingResource
 import com.jesusrojo.remote.api.RawDatasApiService
+import com.jesusrojo.remote.api.UsersApiService
 
 import dagger.Module
 import dagger.Provides
@@ -88,4 +89,9 @@ class NetModule {
     @Singleton
     fun provideRawDatasApiService(retrofit: Retrofit): RawDatasApiService =
         retrofit.create(RawDatasApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideUsersApiService(retrofit: Retrofit): UsersApiService =
+        retrofit.create(UsersApiService::class.java)
 }
