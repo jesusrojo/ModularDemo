@@ -88,8 +88,9 @@ abstract class BaseUiFragment : Fragment() {
     protected fun updateUiState(it: UiState<List<UiData>>) {
         when (it) {
             is UiState.Success -> {
-                updateUiSuccess(it.data)
-                toastMsg4Debug(it.message) //todo debug
+                val msg = it.message
+                updateUiSuccess(it.data, msg)
+                toastMsg4Debug(msg) //todo debug
             }
             is UiState.Loading -> updateUiLoading()
             is UiState.Error -> updateUiError(it.message)
@@ -107,8 +108,8 @@ abstract class BaseUiFragment : Fragment() {
         }
     }
 
-    private fun updateUiSuccess(datas: List<UiData>?) =
-        uiHelper.updateUiSuccess(datas)
+    private fun updateUiSuccess(datas: List<UiData>?, msg: String?) =
+        uiHelper.updateUiSuccess(datas, msg)
 
     private fun updateUiError(message: String?) {
         uiHelper.updateUiError(message)

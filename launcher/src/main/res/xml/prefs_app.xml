@@ -2,7 +2,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <SwitchPreferenceCompat
-        app:key="SHOULD_UPDATE_KEY"
-        app:title="Should Update"
-        app:summary="Enable, will fetch from remote, otherwise from local or remote if empty local"/>
+        app:key="@string/pref_should_update_key"
+        app:title="@string/pref_should_update_title"
+        app:summary="@string/pref_should_update_summary"/>
+
+    <CheckBoxPreference
+        app:key="@string/pref_should_update_key"
+        app:title="@string/pref_should_update_title"
+        app:summary="@string/pref_should_update_summary"/>
 </PreferenceScreen>

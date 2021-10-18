@@ -4,9 +4,7 @@ import com.jesusrojo.data.datasource.UiDatasLocalDataSource
 import com.jesusrojo.data.datasource.UiDatasRemoteDataSource
 import com.jesusrojo.data.model.*
 
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import java.util.logging.Level
 import java.util.logging.Logger
 import javax.inject.Inject
@@ -14,20 +12,22 @@ import javax.inject.Inject
 class UiDatasRepositoryImpl @Inject constructor(
     private val remote: UiDatasRemoteDataSource,
     private val local: UiDatasLocalDataSource,
-//    private val prefs: PrefsHelp,
 ) : UiDatasRepository {
 
     private val isDebug = true
     private val logger = Logger.getLogger(UiDatasRepositoryImpl::class.java.simpleName)
     private fun l(msg: String) { if(isDebug)logger.log(Level.INFO, "$msg ##") }
 
-    private fun shouldUpdate(): Boolean = false // todo
-
-    override suspend fun fetchDatas(): RemoteState<List<UiData>> {
-        l("fetchDatas")
-        if(shouldUpdate()){
+    override suspend fun fetchDatas(shouldUpdate: Boolean): RemoteState<List<UiData>> {
+        l("fetchDatas $shouldUpdate")
+        if(shouldUpdate){
             return fetchFromRemoteAndSaveToDB()
         }
+        return fetchFromDBOrRemote()
+    }
+
+    private suspend fun fetchFromDBOrRemote(): RemoteState<List<UiData>> {
+        l("fetchFromDBOrRemote")
         val uiDatas = local.fetchDatasDB()
         if (isNotNullNotEmpty(uiDatas)) {
             return RemoteState.Success(uiDatas, "local")
@@ -35,7 +35,7 @@ class UiDatasRepositoryImpl @Inject constructor(
         return fetchFromRemoteAndSaveToDB()
     }
 
-    override suspend fun fetchFromRemoteAndSaveToDB(): RemoteState<List<UiData>> {
+    private suspend fun fetchFromRemoteAndSaveToDB(): RemoteState<List<UiData>> {
         l("fetchFromRemoteAndSaveToDB")
         val remoteState = remote.fetchDatasRemote()
         return when (remoteState) {

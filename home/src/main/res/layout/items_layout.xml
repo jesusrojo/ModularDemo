@@ -11,8 +11,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- _UP DEBUG logs-->
-        <TextView android:id="@+id/tv_debug_items"
+       <!-- _UP DEBUG size and msg-->
+        <TextView android:id="@+id/tv_4_debug"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="end"

@@ -49,33 +49,10 @@ class ItemsViewModel @Inject constructor(
     }
 
     init {
-        fetchDatasWithPrefs()
         fetchDatas()
     }
 
-    private fun fetchDatasWithPrefs() {
-        fetchDatasJob?.cancel()
-        fetchDatasJob = vmScope.launch(ioDispatcher) {
-            if (shouldUpdate()) {
-                updateDatas()
-            } else {
-                fetchDatas()
-            }
-        }
-    }
-
-    private suspend fun updateDatas() {
-        DebugHelp.l("updateDatas")
-        try {
-            val remoteState = repository.fetchFromRemoteAndSaveToDB()
-            handleRepoState(remoteState)
-        } catch (e: Exception) {
-            updateUiError("Error $e")
-        }
-    }
-
     private suspend fun shouldUpdate() = prefsHelp.getShouldUpdate()
-
 
     private fun fetchDatas() {
         DebugHelp.l("fetchDatas")
@@ -83,7 +60,8 @@ class ItemsViewModel @Inject constructor(
         fetchDatasJob?.cancel()
         fetchDatasJob = vmScope.launch(ioDispatcher) {
             try {
-                val remoteState = repository.fetchDatas()
+                val shouldUpdate = shouldUpdate()
+                val remoteState = repository.fetchDatas(shouldUpdate)
                 handleRepoState(remoteState)
             } catch (e: Exception) {
                 updateUiError("Error $e")

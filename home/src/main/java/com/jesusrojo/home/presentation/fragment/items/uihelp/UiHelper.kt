@@ -131,7 +131,7 @@ class UiHelper(
 
 
     //UI UPDATES
-    fun updateUiSuccess(datas: List<UiData>?) {
+    fun updateUiSuccess(datas: List<UiData>?, msg: String?) {
         hideProgressBar()
         if (datas != null) {
             if (datas.isNotEmpty()) {
@@ -142,8 +142,9 @@ class UiHelper(
                     scrollRecyclerToPositionZero()
                 }
                 hideTextViewError()
-                val textUi = "Size: ${datas.size}"
-                binding.tvDebugItems.text = textUi //_UP DEBUG
+
+                val size = "MSG: $msg Size: ${datas.size}"
+                binding.tv4Debug.text = size //_UP DEBUG
             } else {
                 showMsgBadList()
             }
