@@ -5,11 +5,12 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
+import com.jesusrojo.common.util.DebugHelp
 import com.jesusrojo.data.model.UiData
 import com.jesusrojo.home.R
 import com.jesusrojo.home.databinding.ItemsLayoutBinding
 import com.jesusrojo.home.di.Injection
-import com.jesusrojo.list.model.UiState
+import com.jesusrojo.data.model.UiState
 
 import com.jesusrojo.home.presentation.fragment.details.DetailsFragment
 import com.jesusrojo.home.presentation.fragment.items.uihelp.UiHelper
@@ -86,10 +87,24 @@ abstract class BaseUiFragment : Fragment() {
     //UI UPDATES
     protected fun updateUiState(it: UiState<List<UiData>>) {
         when (it) {
-            is UiState.Success -> updateUiSuccess(it.data)
+            is UiState.Success -> {
+                updateUiSuccess(it.data)
+                toastMsg4Debug(it.message) //todo debug
+            }
             is UiState.Loading -> updateUiLoading()
             is UiState.Error -> updateUiError(it.message)
         }.exhaustive
+    }
+
+    private fun toastMsg4Debug(msg: String?) {
+        DebugHelp.l("toastMsg4Debug $msg")
+        if (DebugHelp.IS_DEBUG) {
+            msg?.let {
+                requireActivity().toast(msg)
+            }
+        } else {
+            //noting
+        }
     }
 
     private fun updateUiSuccess(datas: List<UiData>?) =

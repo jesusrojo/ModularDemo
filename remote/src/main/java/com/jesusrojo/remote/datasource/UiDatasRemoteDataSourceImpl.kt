@@ -31,7 +31,7 @@ class UiDatasRemoteDataSourceImpl(
             if(rawDatas != null && rawDatas.isNotEmpty()) {
 
                 val uiDatas = mapper(rawDatas)
-                return RemoteState.Success(uiDatas)
+                return RemoteState.Success(uiDatas, "remote")
 
             } else {
                 return RemoteState.Error("rawDatas null or empty")

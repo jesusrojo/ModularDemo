@@ -30,7 +30,7 @@ class UiDatasRepositoryImpl @Inject constructor(
         }
         val uiDatas = local.fetchDatasDB()
         if (isNotNullNotEmpty(uiDatas)) {
-            return RemoteState.Success(uiDatas)
+            return RemoteState.Success(uiDatas, "local")
         }
         return fetchFromRemoteAndSaveToDB()
     }
@@ -46,9 +46,10 @@ class UiDatasRepositoryImpl @Inject constructor(
 
     private suspend fun handleSuccess(remoteState: RemoteState<List<UiData>>): RemoteState<List<UiData>> {
         val uiDatas: List<UiData>? = remoteState.data
+        val msg: String? = remoteState.message
         return if (isNotNullNotEmpty(uiDatas)) {
             local.saveToDB(uiDatas!!)
-            RemoteState.Success(uiDatas!!)
+            RemoteState.Success(uiDatas, msg)
         } else {
             RemoteState.Error("Error datas null or empty. ${remoteState.message}")
         }

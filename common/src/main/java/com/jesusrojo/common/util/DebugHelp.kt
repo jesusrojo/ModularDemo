@@ -8,7 +8,11 @@ import android.util.Log
 class DebugHelp {
 
     companion object{
+
+        const val IS_DEBUG: Boolean = true
+
         private const val jrTag = "##"
+
         var fullLog = ""
 
         fun l(classSimpleName: String, message: String) {
