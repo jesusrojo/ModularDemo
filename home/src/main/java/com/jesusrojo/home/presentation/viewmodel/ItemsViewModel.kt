@@ -62,14 +62,14 @@ class ItemsViewModel @Inject constructor(
             try {
                 val shouldUpdate = shouldUpdate()
                 val remoteState = repository.fetchDatas(shouldUpdate)
-                handleRepoState(remoteState)
+                handleRemoteState(remoteState)
             } catch (e: Exception) {
                 updateUiError("Error $e")
             }
         }
     }
 
-    private fun handleRepoState(remoteState: RemoteState<List<UiData>>) {
+    private fun handleRemoteState(remoteState: RemoteState<List<UiData>>) {
         when (remoteState) {
             is RemoteState.Success -> {
                 val uiDatas: List<UiData>? = remoteState.data
@@ -88,7 +88,7 @@ class ItemsViewModel @Inject constructor(
         DebugHelp.l("deleteAllDB")
         vmScope.launch(ioDispatcher) {
             try {
-               // repository.deleteAllDB()
+                repository.deleteAllDB()//todo does it works?
                 updateUiError("All deleted ok")
                 DebugHelp.l("all deleted ok")
             } catch (e: Exception) {

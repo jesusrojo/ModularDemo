@@ -48,11 +48,16 @@ class UiDatasRepositoryImpl @Inject constructor(
         val uiDatas: List<UiData>? = remoteState.data
         val msg: String? = remoteState.message
         return if (isNotNullNotEmpty(uiDatas)) {
-            local.saveToDB(uiDatas!!)
+            deleteDBAndSaveToDB(uiDatas!!)
             RemoteState.Success(uiDatas, msg)
         } else {
             RemoteState.Error("Error datas null or empty. ${remoteState.message}")
         }
+    }
+
+    private suspend fun deleteDBAndSaveToDB(uiDatas: List<UiData>) {
+        deleteAllDB()
+        local.saveToDB(uiDatas)
     }
 
     private fun isNotNullNotEmpty(uiDatas: List<UiData>?) =
