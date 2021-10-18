@@ -1,12 +1,12 @@
-package com.jesusrojo.remote.mapper
+package com.jesusrojo.remote.jsonplaceholder.mapper
 
 import com.jesusrojo.data.model.UiData
-import com.jesusrojo.remote.model.RawData
+import com.jesusrojo.remote.jsonplaceholder.model.UserRawData
 import javax.inject.Inject
 
-class RawDataToUiDataMapper @Inject constructor() : Function1<List<RawData>, List<UiData>> {
+class UserRawDataToUiDataMapper @Inject constructor() : Function1<List<UserRawData>, List<UiData>> {
 
-    override fun invoke(rawDatas: List<RawData>): List<UiData> {
+    override fun invoke(rawDatas: List<UserRawData>): List<UiData> {
         return rawDatas.map {
             var userId: Int = -1
             var name = ""

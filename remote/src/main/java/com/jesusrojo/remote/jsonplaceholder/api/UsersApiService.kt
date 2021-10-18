@@ -1,7 +1,6 @@
-package com.jesusrojo.remote.api
+package com.jesusrojo.remote.jsonplaceholder.api
 
-import com.jesusrojo.remote.model.RawData
-import com.jesusrojo.remote.model.UserRawData
+import com.jesusrojo.remote.jsonplaceholder.model.UserRawData
 import retrofit2.Response
 import retrofit2.http.GET
 

@@ -1,13 +1,12 @@
-package com.jesusrojo.remote.mapper
+package com.jesusrojo.remote.uidata.mapper
 
 import com.jesusrojo.data.model.UiData
-import com.jesusrojo.remote.model.RawData
-import com.jesusrojo.remote.model.UserRawData
+import com.jesusrojo.remote.uidata.model.RawData
 import javax.inject.Inject
 
-class UserRawDataToUiDataMapper @Inject constructor() : Function1<List<UserRawData>, List<UiData>> {
+class RawDataToUiDataMapper @Inject constructor() : Function1<List<RawData>, List<UiData>> {
 
-    override fun invoke(rawDatas: List<UserRawData>): List<UiData> {
+    override fun invoke(rawDatas: List<RawData>): List<UiData> {
         return rawDatas.map {
             var userId: Int = -1
             var name = ""
@@ -36,11 +35,11 @@ class UserRawDataToUiDataMapper @Inject constructor() : Function1<List<UserRawDa
             val websiteRaw = it.website
             if (websiteRaw != null) website = websiteRaw
 
-            val addressRaw = it.address?.toString()
-            if (addressRaw != null) address = addressRaw
-
-            val companyRaw = it.company?.toString()
-            if (companyRaw != null) company = companyRaw
+//            val addressRaw = it.address?.toString()
+//            if (addressRaw != null) address = addressRaw
+//
+//            val companyRaw = it.company?.toString()
+//            if (companyRaw != null) company = companyRaw
 
             val description = it.toString()
             UiData(userId, name, description, "")

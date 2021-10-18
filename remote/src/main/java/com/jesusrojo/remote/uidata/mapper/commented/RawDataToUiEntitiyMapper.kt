@@ -1,7 +1,7 @@
-//package com.jesusrojo.remote.mapper
+//package com.jesusrojo.remote.uidata.mapper
 //
 //import com.jesusrojo.data.model.UiData
-//import com.jesusrojo.remote.model.RawData
+//import com.jesusrojo.remote.uidata.model.RawData
 //import javax.inject.Inject
 //
 //class RawDataToUiEntitiyMapper @Inject constructor() : Function1<List<RawData>, List<UiData>> {

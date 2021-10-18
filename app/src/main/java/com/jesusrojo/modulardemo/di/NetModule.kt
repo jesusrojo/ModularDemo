@@ -2,8 +2,8 @@ package com.jesusrojo.modulardemo.di
 
 import android.content.Context
 import com.jakewharton.espresso.OkHttp3IdlingResource
-import com.jesusrojo.remote.api.RawDatasApiService
-import com.jesusrojo.remote.api.UsersApiService
+import com.jesusrojo.remote.uidata.api.RawDatasApiService
+import com.jesusrojo.remote.jsonplaceholder.api.UsersApiService
 
 import dagger.Module
 import dagger.Provides

@@ -7,12 +7,12 @@ import com.jesusrojo.local.datasource.UiDatasLocalDataSourceImpl
 import com.jesusrojo.local.room.UiDataDao
 import com.jesusrojo.local.room.mapper.UiDataDboToUiDataMapper
 import com.jesusrojo.local.room.mapper.UiDataToDboMapper
-import com.jesusrojo.remote.api.RawDatasApiService
-import com.jesusrojo.remote.api.UsersApiService
-import com.jesusrojo.remote.datasource.UiDatasRemoteDataSourceImpl
-import com.jesusrojo.remote.datasource.UsersRemoteDataSourceImpl
-import com.jesusrojo.remote.mapper.RawDataToUiDataMapper
-import com.jesusrojo.remote.mapper.UserRawDataToUiDataMapper
+import com.jesusrojo.remote.uidata.api.RawDatasApiService
+import com.jesusrojo.remote.jsonplaceholder.api.UsersApiService
+import com.jesusrojo.remote.uidata.datasource.UiDatasRemoteDataSourceImpl
+import com.jesusrojo.remote.jsonplaceholder.datasource.UsersRemoteDataSourceImpl
+import com.jesusrojo.remote.uidata.mapper.RawDataToUiDataMapper
+import com.jesusrojo.remote.jsonplaceholder.mapper.UserRawDataToUiDataMapper
 
 
 import dagger.Module

@@ -1,4 +1,4 @@
-package com.jesusrojo.remote.model
+package com.jesusrojo.remote.jsonplaceholder.model
 
 
 import com.google.gson.annotations.SerializedName
