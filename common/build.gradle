@@ -12,8 +12,6 @@ android {
     }
 }
 dependencies {
-    implementation project(':data')
-//    implementation "javax.inject:javax.inject:$javaInjectVersion"
     // PREFERENCES KT
     implementation "androidx.preference:preference-ktx:1.1.1"
 }

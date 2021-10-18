@@ -15,6 +15,8 @@ class PrefsHelp(val prefs: SharedPreferences) {
         }
     }
 
-
+    suspend fun getShouldUpdate() {
+        prefs.getBoolean(SHOULD_UPDATE_KEY, true)
+    }
 
 }
